@@ -27,4 +27,20 @@ $error-red: $red;
 $warning-red: $orange;
 $gold-star: $blue; // not changing the name so it doesn't break things, but it is not, gold.
 
+// Tell UI to use selected colors
+$ui-base-color: $classic-base-color !default; // Darkest
+$ui-base-lighter-color: lighten(
+  $ui-base-color,
+  26%
+) !default; // Lighter darkest
 // Override new mastodon defaults
+
+:root {
+    --dropdown-border-color: #{lighten($ui-base-color, 12%)};
+    --dropdown-background-color: #{lighten($ui-base-color, 4%)};
+    --dropdown-shadow: 0 20px 25px -5px #{rgba($base-shadow-color, 0.25)},
+      0 8px 10px -6px #{rgba($base-shadow-color, 0.25)};
+    --modal-background-color: #{darken($ui-base-color, 4%)};
+    --modal-border-color: #{lighten($ui-base-color, 4%)};
+  }
+  
