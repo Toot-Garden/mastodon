@@ -1,0 +1,30 @@
+$brown: #463F3A; //$blue: #4d8fc9;
+$gentle-gray: #d0d0d0; //$green: #78e1a9;
+$yellow: rgb(248, 233, 148);
+$deeper-brown: #463F3A; //$deeper-green: #47ae77;
+$even-deeper-brown: #463F3A; //$even-deeper-green: #3b9a67;
+$red: rgb(244, 140, 130);
+$orange: rgb(248, 207, 131);
+$mocha: #967969; //$grayblue: #294b58;
+$brightgray: rgb(226, 226, 226);
+$compose-panel: #e3e3e3;
+$black-but-not-too-black: rgb(7, 7, 7);
+$basically-black: #0d0d0d;
+$dark: #18261a;
+$dark-light: #2f4034;
+$white: #F4F3EE;
+$white-darker: #e9e8e7;
+
+// Override Mastodon's defaults
+$classic-base-color: $mocha;
+$classic-primary-color: $gentle-gray;
+$classic-secondary-color: $white;
+$classic-highlight-color: $brown;
+
+$black: $black-but-not-too-black;
+$success-green: #8ae0b2;
+$error-red: $red;
+$warning-red: $orange;
+$gold-star: $yellow;
+
+// Override new mastodon defaults

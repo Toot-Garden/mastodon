@@ -1,0 +1,30 @@
+$blue: #4d8fc9;
+$green: #78e1a9;
+$yellow: rgb(248, 233, 148);
+$deeper-green: #47ae77;
+$even-deeper-green: #3b9a67;
+$red: rgb(224, 115, 105);
+$orange: rgb(246, 198, 108);
+$grayblue: #294b58;
+$brightgray: rgb(226, 226, 226);
+$compose-panel: #e3e3e3;
+$black-but-not-too-black: rgb(7, 7, 7);
+$basically-black: #0d0d0d;
+$dark: #18261a;
+$dark-light: #2f4034;
+$white: rgb(247, 246, 246);
+$white-darker: rgb(240, 238, 238);
+
+// Override Mastodon's defaults
+$classic-base-color: $grayblue;
+$classic-primary-color: rgb(172, 212, 222);
+$classic-secondary-color: $white;
+$classic-highlight-color: $blue;
+
+$black: $black-but-not-too-black;
+$success-green: $green;
+$error-red: $red;
+$warning-red: $orange;
+$gold-star: $blue; // not changing the name so it doesn't break things, but it is not, gold.
+
+// Override new mastodon defaults
