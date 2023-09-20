@@ -1732,7 +1732,10 @@ en:
     does_not_match_previous_name: does not match the previous name
   themes:
     contrast: Mastodon (High contrast)
-    default: Mastodon (Dark)
+    default: Garden (Colorful, Fun)
+    cafe: Cafe (Cozy, Quiet)
+    vibrant: Vibrant (Brighter Purples & Pinks)
+    mastodon-dark: Mastodon (Dark)
     mastodon-light: Mastodon (Light)
   time:
     formats:
