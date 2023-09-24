@@ -21,6 +21,27 @@ $classic-primary-color: $gentle-gray;
 $classic-secondary-color: $white;
 $classic-highlight-color: $brown;
 
+//Override mastodon 4.2+ new colors
+$blurple-600: #2f5766; // Deeper Green
+$blurple-500: #3a6b7c; // Lighter Green
+$blurple-300: #497d8f; // Faded Green
+$grey-600: #525155; // Actually grey?? what is trout??
+$grey-100: #d3d3db; // Light gray
+
+// override mastodon 4.2+ colors
+$ui-base-color: $classic-base-color;
+$ui-base-lighter-color: lighten($classic-base-color, 8%);
+$ui-primary-color: $classic-primary-color;
+$ui-secondary-color: $classic-base-color;
+$ui-highlight-color: $classic-highlight-color;
+
+$ui-button-secondary-color: $grey-600 !default;
+$ui-button-secondary-border-color: $grey-600 !default;
+$ui-button-secondary-focus-color: $white !default;
+
+$ui-button-tertiary-color: $blurple-500 !default;
+$ui-button-tertiary-border-color: $blurple-500 !default;
+
 $black: $black-but-not-too-black;
 $success-green: #8ae0b2;
 $error-red: $red;

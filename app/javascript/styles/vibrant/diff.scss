@@ -110,7 +110,7 @@ button.column-header {
 .emoji-mart-search,
 .emoji-mart-scroll,
 .emoji-mart-category-label span,
-.emoji-mart-bar {
+.emoji-mart-bar, .emoji-picker-dropdown__menu {
   background-color: $compose-panel !important;
 }
 
@@ -290,4 +290,39 @@ a.onboarding__link {
 }
 .progress-tracker .separator {
   background: $white;
+}
+// why is it so hard to read lmao
+.empty-column-indicator span {
+  color: darken(white, 6%);
+}
+strong.navigation-bar__profile-account {
+  color: darken(white, 8%);
+}
+div.content__heading__row h2 {
+  color: darken(white, 8%) !important;
+}
+.status__relative-time {
+  color: darken(white, 8%)
+}
+span.display-name {
+  color: rgba(255, 255, 255, 0.582)
+}
+button.load-more {
+  color: rgba(255, 255, 255, 0.322)
+}
+.emoji-mart-anchor-selected {
+  color: $deeper-purple;
+}
+.compose-form__buttons div .icon-button, .compose-form__buttons, .compose-form__buttons .text-icon-button,  .compose-form__buttons .icon-button, .compose-form__highlightable span {
+  color: white
+}
+.language-dropdown__dropdown__results.emoji-mart-scroll {
+  background-color: $even-deeper-purple !important;
+  color: white !important;
+}
+div.language-dropdown__dropdown__results__item {
+  background-color: $even-deeper-purple !important;
+}
+div.language-dropdown__dropdown__results__item:hover {
+  background-color: lighten($even-deeper-purple, 10%) !important;
 }
