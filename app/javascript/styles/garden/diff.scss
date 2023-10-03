@@ -307,10 +307,10 @@ div.content__heading__row h2 {
   color: darken(white, 20%)
 }
 span.display-name {
-  color: rgba(255, 255, 255, 0.582)
+  color: $white;
 }
 button.load-more {
-  color: rgba(255, 255, 255, 0.322)
+  color: $white-darker;
 }
 .emoji-mart-anchor-selected {
   color: $deeper-green;
@@ -324,4 +324,37 @@ div.language-dropdown__dropdown__results__item {
 }
 div.language-dropdown__dropdown__results__item:hover {
   background-color: lighten($even-deeper-green, 10%) !important;
+}
+// fixes the "common" language naming being unreadable
+div.language-dropdown__dropdown__results__item > span:nth-child(2) {
+  color: white !important;
+}
+// Reply Box
+.reply-indicator {
+  background-color: $grayblue-darker;
+  border: 2px solid $white;
+  color: $white !important;
+}
+.reply-indicator__header {
+  color: $white !important;
+}
+.reply-indicator__content {
+  color: $white !important;
+}
+.reply-indicator__cancel .fa {
+  color: $white !important;
+}
+// post open icons box
+.detailed-status__action-bar {
+  background-color: $grayblue;
+  border-top: 2px solid $white;
+  border-bottom: 2px solid $white;
+}
+// post open icons box icons
+.detailed-status__action-bar .icon-button {
+  background-color: $white !important;
+}
+// hashtags
+a.mention {
+  color: $hashtags
 }

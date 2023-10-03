@@ -61,7 +61,7 @@ button.btn.button,
 }
 
 .star-icon.icon-button.active {
-  color: $gentle-gray;
+  color: darken($gentle-gray, 5%);
 }
 
 i.fa.fa-retweet.fa-fw {
@@ -323,4 +323,46 @@ div.language-dropdown__dropdown__results__item {
 }
 div.language-dropdown__dropdown__results__item:hover {
   background-color: lighten($even-deeper-brown, 10%) !important;
+}
+// success box is hard to read in light green
+.flash-message {
+  background-color: $even-deeper-brown !important;
+  color: $white !important;
+  border: 2px solid white !important;
+}
+// fixes the "common" language naming being unreadable
+div.language-dropdown__dropdown__results__item > span:nth-child(2) {
+  color: white !important;
+}
+// Reply Box
+.reply-indicator {
+  background-color: $even-deeper-brown;
+  border: 2px solid $white;
+  color: $white !important;
+}
+.reply-indicator__header {
+  color: $white !important;
+}
+.reply-indicator__content {
+  color: $white !important;
+}
+.reply-indicator__cancel .fa {
+  color: $white !important;
+}
+// post open icons box
+.detailed-status__action-bar {
+  background-color: $deeper-brown;
+  border-top: 2px solid $white;
+  border-bottom: 2px solid $white;
+}
+// post open icons box icons
+.detailed-status__action-bar .icon-button {
+  background-color: $deeper-brown !important;
+}
+// hashtags
+a.mention {
+  color: $hashtags
+}
+.reply-indicator__content a.mention {
+  color: $mocha;
 }

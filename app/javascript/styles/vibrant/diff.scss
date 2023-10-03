@@ -326,3 +326,45 @@ div.language-dropdown__dropdown__results__item {
 div.language-dropdown__dropdown__results__item:hover {
   background-color: lighten($even-deeper-purple, 10%) !important;
 }
+// success box is hard to read in light green
+.flash-message {
+  background-color: $even-deeper-purple !important;
+  color: $white !important;
+  border: 2px solid white !important;
+}
+// fixes the "common" language naming being unreadable
+div.language-dropdown__dropdown__results__item > span:nth-child(2) {
+  color: darken(white, 4%) !important;
+}
+// Reply Box
+.reply-indicator {
+  background-color: darken($even-deeper-purple, 6%);
+  border: 2px solid $white;
+  color: $white !important;
+}
+.reply-indicator__header {
+  color: $white !important;
+}
+.reply-indicator__content {
+  color: $white !important;
+}
+.reply-indicator__cancel .fa {
+  color: $white !important;
+}
+// post open icons box
+.detailed-status__action-bar {
+  background-color: $even-deeper-purple;
+  border-top: 2px solid $white;
+  border-bottom: 2px solid $white;
+}
+// post open icons box icons
+.detailed-status__action-bar .icon-button {
+  background-color: darken($pinkurple, 10%) !important;
+}
+// hashtags
+a.mention {
+  color: $hashtags;
+}
+.reply-indicator__content a.mention {
+  color: $basically-black;
+}
