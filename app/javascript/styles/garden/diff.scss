@@ -358,3 +358,7 @@ div.language-dropdown__dropdown__results__item > span:nth-child(2) {
 a.mention, a.u-url.hashtag.status-link a.u-url.hashtag {
   color: $hashtags
 }
+// reply prepend text
+.status__prepend, .status__display-name, .status__prepend .status__display-name strong {
+  color: white;
+}
