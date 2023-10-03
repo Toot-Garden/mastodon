@@ -376,3 +376,6 @@ a.mention, a.u-url.hashtag.status-link a.u-url.hashtag {
 .emoji-mart-anchor, .reply-indicator__content a {
   color: $hashtags;
 }
+.reply-indicator__content a.unhandled-link, .status__content a.unhandled-link {
+  color: $hashtags
+}
