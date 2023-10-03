@@ -373,3 +373,13 @@ a.mention, a.u-url.hashtag.status-link a.u-url.hashtag {
 .confirmation-modal__container, .report-modal__target {
   color: $white;
 }
+// admin page
+.admin-wrapper .content > p {
+  color: $white;
+}
+.pending-account__header a {
+  color: $white;
+}
+.inline-name-tag .username, .name-tag .username, a.inline-name-tag .username, a.name-tag .username {
+  color: $hashtags;
+}
