@@ -369,3 +369,7 @@ a.mention, a.u-url.hashtag.status-link a.u-url.hashtag {
 .reply-indicator__content a.unhandled-link, .status__content a.unhandled-link {
   color: $hashtags
 }
+// confirmation modals are too hard to read
+.confirmation-modal__container, .report-modal__target {
+  color: $white;
+}
