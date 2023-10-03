@@ -362,8 +362,8 @@ div.language-dropdown__dropdown__results__item > span:nth-child(2) {
   background-color: darken($pinkurple, 10%) !important;
 }
 // hashtags
-a.mention {
-  color: $hashtags;
+a.mention, a.u-url.hashtag.status-link a.u-url.hashtag {
+  color: $hashtags
 }
 .reply-indicator__content a.mention {
   color: $basically-black;

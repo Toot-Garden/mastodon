@@ -355,6 +355,6 @@ div.language-dropdown__dropdown__results__item > span:nth-child(2) {
   background-color: $white !important;
 }
 // hashtags
-a.mention {
+a.mention, a.u-url.hashtag.status-link a.u-url.hashtag {
   color: $hashtags
 }
