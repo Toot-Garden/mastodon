@@ -372,3 +372,7 @@ a.mention, a.u-url.hashtag.status-link a.u-url.hashtag {
 .status__prepend, .status__display-name, .status__prepend .status__display-name strong {
   color: white;
 }
+// reply links are too dark
+.emoji-mart-anchor, .reply-indicator__content a {
+  color: $hashtags;
+}
