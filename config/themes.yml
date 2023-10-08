@@ -1,7 +1,4 @@
-default: styles/garden.scss
-cafe: styles/cafe.scss
-vibrant: styles/vibrant.scss
-mastodon-dark: styles/application.scss
+default: styles/application.scss
 contrast: styles/contrast.scss
 mastodon-light: styles/mastodon-light.scss
 
