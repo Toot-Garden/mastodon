@@ -44,7 +44,7 @@ module Mastodon
     end
 
     def repository
-      ENV.fetch('GITHUB_REPOSITORY', 'mastodon/mastodon')
+      ENV.fetch('GITHUB_REPOSITORY', 'Toot-Garden/mastodon')
     end
 
     def source_base_url
@@ -53,7 +53,7 @@ module Mastodon
 
     # specify git tag or commit hash here
     def source_tag
-      ENV.fetch('SOURCE_TAG', nil)
+      ENV.fetch('SOURCE_TAG', 'garden-stable-4.2')
     end
 
     def source_url
