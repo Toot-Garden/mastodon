@@ -703,6 +703,7 @@ const startServer = async () => {
 
           // Handling blocks & mutes and domain blocks: If one of those applies,
           // then we don't transmit the payload of the event to the client
+          // @ts-ignore
           if (values[0].rows.length > 0 || (accountDomain && values[1].rows.length > 0)) {
             return;
           }
@@ -719,6 +720,7 @@ const startServer = async () => {
           // TODO: Move this logic out of the message handling lifecycle
           // @ts-ignore
           if (!req.cachedFilters) {
+            // @ts-ignore
             const filterRows = values[accountDomain ? 2 : 1].rows;
 
             // @ts-ignore

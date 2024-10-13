@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import AlternateEmailIcon from '@/material-icons/400-24px/alternate_email.svg?react';
 import BookmarksActiveIcon from '@/material-icons/400-24px/bookmarks-fill.svg?react';
 import BookmarksIcon from '@/material-icons/400-24px/bookmarks.svg?react';
+import ChatIcon from '@/material-icons/400-24px/chat_bubble.svg?react';
 import ExploreActiveIcon from '@/material-icons/400-24px/explore-fill.svg?react';
 import ExploreIcon from '@/material-icons/400-24px/explore.svg?react';
 import ModerationIcon from '@/material-icons/400-24px/gavel.svg?react';
@@ -150,6 +151,7 @@ class NavigationPanel extends Component {
               <ColumnLink transparent to='/home' icon='home' iconComponent={HomeIcon} activeIconComponent={HomeActiveIcon} text={intl.formatMessage(messages.home)} />
               <NotificationsLink />
               <FollowRequestsLink />
+              <ColumnLink href='https://translate.toot.garden' target='_blank' icon='chat' iconComponent={ChatIcon} text='Translate' />
             </>
           )}
 
@@ -162,7 +164,6 @@ class NavigationPanel extends Component {
           {(signedIn || timelinePreview) && (
             <ColumnLink transparent to='/public/local' isActive={this.isFirehoseActive} icon='globe' iconComponent={PublicIcon} text={intl.formatMessage(messages.firehose)} />
           )}
-
           {!signedIn && (
             <div className='navigation-panel__sign-in-banner'>
               <hr />
