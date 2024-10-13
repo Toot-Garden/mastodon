@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access,
                   @typescript-eslint/no-unsafe-call,
                   @typescript-eslint/no-explicit-any,
-                  @typescript-eslint/no-unsafe-assignment */
+                  @typescript-eslint/no-unsafe-assignment,
+                  @typescript-eslint/restrict-plus-operands */
 
 import type { CSSProperties } from 'react';
 import { useState, useRef, useCallback } from 'react';
@@ -248,6 +249,10 @@ export const DetailedStatus: React.FC<{
   const visibilityLink = (
     <>
       ·<VisibilityIcon visibility={status.get('visibility')} />
+      <span>
+        {status.get('visibility').charAt(0).toUpperCase().toString() +
+          status.get('visibility').slice(1).toString()}
+      </span>
     </>
   );
 
