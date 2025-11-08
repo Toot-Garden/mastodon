@@ -260,6 +260,10 @@ export const DetailedStatus: React.FC<{
   const visibilityLink = (
     <>
       ·<VisibilityIcon visibility={status.get('visibility')} />
+      <span>
+        {status.get('visibility').charAt(0).toUpperCase().toString() +
+          status.get('visibility').slice(1).toString()}
+      </span>
     </>
   );
 

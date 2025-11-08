@@ -94,7 +94,11 @@ export const LinkFooter: React.FC<{
           />
         </a>
         <DividingCircle />
-        <span className='version'>v{version}</span>
+        <p>
+          <strong>Mastodon</strong>:
+          {' '}
+          <span className='version'>v{version} + Garden Tweaks</span>
+        </p>
       </p>
     </div>
   );

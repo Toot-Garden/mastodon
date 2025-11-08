@@ -39,12 +39,13 @@ class MediaAttachment < ApplicationRecord
 
   MAX_DESCRIPTION_LENGTH = 1_500
 
-  IMAGE_LIMIT = 16.megabytes
-  VIDEO_LIMIT = 99.megabytes
+  IMAGE_LIMIT = 80.megabytes
+  VIDEO_LIMIT = 320.megabytes
+  AUDIO_LIMIT = 180.megabytes
 
   MAX_VIDEO_MATRIX_LIMIT = 8_294_400 # 3840x2160px
   MAX_VIDEO_FRAME_RATE   = 120
-  MAX_VIDEO_FRAMES       = 36_000 # Approx. 5 minutes at 120 fps
+  MAX_VIDEO_FRAMES       = 86_000 # Approx. 12 minutes at 120 fps
 
   IMAGE_FILE_EXTENSIONS = %w(.jpg .jpeg .png .gif .webp .heic .heif .avif).freeze
   VIDEO_FILE_EXTENSIONS = %w(.webm .mp4 .m4v .mov).freeze
@@ -154,7 +155,7 @@ class MediaAttachment < ApplicationRecord
       convert_options: {
         output: {
           'loglevel' => 'fatal',
-          'q:a' => 2,
+          'q:a' => 1,
         }.freeze,
       }.freeze,
     }.freeze,
@@ -188,7 +189,16 @@ class MediaAttachment < ApplicationRecord
   before_file_validate :check_video_dimensions
 
   validates_attachment_content_type :file, content_type: IMAGE_MIME_TYPES + VIDEO_MIME_TYPES + AUDIO_MIME_TYPES
-  validates_attachment_size :file, less_than: ->(m) { m.larger_media_format? ? VIDEO_LIMIT : IMAGE_LIMIT }
+  # validates_attachment_size :file, less_than: ->(m) { m.larger_media_format? ? VIDEO_LIMIT : IMAGE_LIMIT }
+  validates_attachment_size :file, less_than: -> (m) {
+    if m.audio_format?
+      AUDIO_LIMIT
+    elsif m.video_format?
+      VIDEO_LIMIT
+    else
+      IMAGE_LIMIT
+    end
+  }
   remotable_attachment :file, VIDEO_LIMIT, suppress_errors: false, download_on_assign: false, attribute_name: :remote_url
 
   has_attached_file :thumbnail,
@@ -242,6 +252,14 @@ class MediaAttachment < ApplicationRecord
 
   def audio_or_video?
     audio? || video?
+  end
+  
+  def audio_format?
+    audio?
+  end
+  
+  def video_format?
+    video?
   end
 
   def to_param
@@ -314,7 +332,55 @@ class MediaAttachment < ApplicationRecord
       elsif VIDEO_MIME_TYPES.include?(attachment.instance.file_content_type)
         VIDEO_STYLES
       else
-        AUDIO_STYLES
+        AUDIO_MIME_TYPES.include?(attachment.instance.file_content_type)
+        # Ensures we aren't mutilating audio files of all types
+        if ['audio/flac'].include?(attachment.instance.file_content_type)
+          {
+            original: {
+              format: 'ogg',
+              content_type: 'audio/ogg',
+              convert_options: {
+                output: {
+                  'loglevel' => 'fatal',
+                  'c:a' => 'libvorbis',
+                  'map' => '0:a',
+                },
+              },
+            },
+          }
+        elsif ['audio/wav', 'audio/x-wav'].include?(attachment.instance.file_content_type)
+          {
+            original: {
+              format: 'ogg',
+              content_type: 'audio/ogg',
+              convert_options: {
+                output: {
+                  'loglevel' => 'fatal',
+                  'c:a' => 'libvorbis',
+                  'q:a' => 10,
+                },
+              },
+            },
+          } # Prevents us from converting ogg to mp3. Q:A of 10 still reduces size a good bit, but keeps quality too.
+          # rubocop:disable Lint/DuplicateBranch
+        elsif ['audio/ogg', 'application/ogg'].include?(attachment.instance.file_content_type)
+          # rubocop:enable Lint/DuplicateBranch
+          {
+            original: {
+              format: 'ogg',
+              content_type: 'audio/ogg',
+              convert_options: {
+                output: {
+                  'loglevel' => 'fatal',
+                  'c:a' => 'libvorbis',
+                  'q:a' => 10,
+                },
+              },
+            },
+          }
+        else
+          AUDIO_STYLES
+        end
       end
     end
 

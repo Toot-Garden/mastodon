@@ -11,6 +11,7 @@ import { animated, useSpring } from '@react-spring/web';
 import { useDrag } from '@use-gesture/react';
 
 import AddIcon from '@/material-icons/400-24px/add.svg?react';
+import ChatIcon from '@/material-icons/400-24px/chat_bubble.svg?react';
 import AlternateEmailIcon from '@/material-icons/400-24px/alternate_email.svg?react';
 import BookmarksActiveIcon from '@/material-icons/400-24px/bookmarks-fill.svg?react';
 import BookmarksIcon from '@/material-icons/400-24px/bookmarks.svg?react';
@@ -293,7 +294,7 @@ export const NavigationPanel: React.FC<{ multiColumn?: boolean }> = ({
             <NotificationsLink />
 
             <FollowRequestsLink />
-
+            <ColumnLink href='https://translate.toot.garden' target='_blank' icon='chat' iconComponent={ChatIcon} text='Translate' />
             <hr />
 
             <ListPanel />
