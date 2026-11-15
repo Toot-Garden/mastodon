@@ -59,6 +59,7 @@ class User < ApplicationRecord
   include User::LdapAuthenticable
   include User::Omniauthable
   include User::PamAuthenticable
+  include User::SignInToken
 
   devise :two_factor_authenticatable,
          otp_secret_length: 32
@@ -70,7 +71,7 @@ class User < ApplicationRecord
          :confirmable
 
   belongs_to :account, inverse_of: :user
-  belongs_to :invite, counter_cache: :uses, optional: true
+  belongs_to :invite, optional: true
   belongs_to :created_by_application, class_name: 'Doorkeeper::Application', optional: true
   belongs_to :role, class_name: 'UserRole', optional: true
   accepts_nested_attributes_for :account
@@ -90,7 +91,7 @@ class User < ApplicationRecord
   validates :email, presence: true, email_address: true, length: { maximum: 320 }
   validates :email, email_mx: { attempt_ip: :sign_up_ip }, if: :validate_email_dns?
 
-  validates_with UserEmailValidator, if: -> { ENV['EMAIL_DOMAIN_LISTS_APPLY_AFTER_CONFIRMATION'] == 'true' || !confirmed? }
+  validates_with UserEmailValidator, if: -> { (ENV['EMAIL_DOMAIN_LISTS_APPLY_AFTER_CONFIRMATION'] == 'true' || !confirmed?) && will_save_change_to_email? }
   validates :agreement, acceptance: { allow_nil: false, accept: [true, 'true', '1'] }, on: :create
 
   # Honeypot/anti-spam fields
@@ -115,6 +116,7 @@ class User < ApplicationRecord
   before_validation :sanitize_role
   before_create :set_approved
   before_create :set_age_verified_at
+  after_create :increment_invite_uses
   after_commit :send_pending_devise_notifications
   after_create_commit :trigger_webhooks
 
@@ -523,5 +525,9 @@ class User < ApplicationRecord
 
   def trigger_webhooks
     TriggerWebhookWorker.perform_async('account.created', 'Account', account_id)
+  end
+
+  def increment_invite_uses
+    invite&.increment!(:uses)
   end
 end
