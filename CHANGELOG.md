@@ -2,6 +2,58 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.5.21] - 2026-11-03
+
+### Security
+
+- Fix DoS through JSON-LD compaction (#41482 by @ClearlyClaire, [GHSA-cf49-73r7-rxj6](https://github.com/mastodon/mastodon/security/advisories/GHSA-cf49-73r7-rxj6))
+- Fix `Forwarded` header taking precedence over `X-Forwarded-For` (#41481 by @ClearlyClaire, [GHSA-qp4r-p842-mw5c](https://github.com/mastodon/mastodon/security/advisories/GHSA-qp4r-p842-mw5c))
+  - If your reverse-proxy setup uses `Forwarded` instead of `X-Forwarded-For`, please make sure it ignores user-provided `X-Forwarded-For` headers.
+  - If you are using our provided `nginx.conf`, please consider updating it.
+- Updated dependencies, in particular to address security advisories in `addressable`, `loofah`, `rack`, and `rails-html-sanitizer`
+
+### Changed
+
+- Change invites use counts to not decrease if an invited user deletes their account (#41458 by @ClearlyClaire)
+
+## [4.5.20] - 2026-10-29
+
+### Security
+
+- Fix insufficient ActivityPub identifier verification ([GHSA-288h-6j8h-6x5j](https://github.com/mastodon/mastodon/security/advisories/GHSA-288h-6j8h-6x5j))
+- Updated dependencies, in particular to address security advisories in Ruby, NodeJS, and `sanitize`
+
+### Fixed
+
+- Fix inefficiency in some hashtag timeline queries (#41132 by @hugogameiro)
+- Fix error in `dev:populate_sample_data` task (#40995 and #41051 by @isidzukuri and @mjankowski)
+
+## [4.5.19] - 2026-10-01
+
+### Security
+
+- Update dependencies
+
+### Added
+
+- Add logging of account data removal (#40572 by @ClearlyClaire)
+
+### Changed
+
+- Change account self-deletion page to always ask to confirm username (#40576 and #40733 by @ClearlyClaire)
+
+### Fixed
+
+- Fix stuck sidekiq jobs by updating dependency sidekiq
+- Fix server error on registration for wrong DOB (#40607 by @sudeeptarlekar)
+- Fix quotes disclaimer disappearing on posts with no quote (#40587 by @crafkaz)
+- Fix `POST /api/v1/accounts` still being accessible when `SSO_ACCOUNT_SIGN_UP` is set (#40681 by @ClearlyClaire)
+- Fix reported statuses not being deleted after account deletion (#40650 by @ClearlyClaire)
+- Fix rate limits not normalizing submitted e-mail addresses (#40658 by @Gargron)
+- Fix moderators being able to issue a warning on moderators of higher position (#40646 by @ClearlyClaire)
+- Fix `PreviewCardsStatus` records not being deleted on account deletion (#40624 by @ClearlyClaire)
+- Fix replies order (#40481 by @OmmyZhang)
+
 ## [4.5.18] - 2026-09-15
 
 ### Security
